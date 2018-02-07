@@ -1,34 +1,26 @@
-/**
+/*
  *
- * App.react.js
- *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
+ * App
  *
  */
 
-import React from 'react';
+import React, {Component} from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Home from 'containers/Home';
+import NotFound from 'containers/NotFound';
 
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+import './style.css';
+import './styleM.css';
 
-  static propTypes = { children: React.PropTypes.node,};
-  static childContextTypes = { muiTheme: React.PropTypes.object };
-
-  getChildContext()
-  {
-    var theme = getMuiTheme();
-
-    return { muiTheme: theme }
-  };
-
+export default class App extends React.Component {
   render() {
     return (
-      <div>
-        {React.Children.toArray(this.props.children)}
-      </div>
+      <Switch>
+        <Route exact path='/' render={() => <Home/>}/>
+
+        <Route path='*' render={() => <NotFound/>}/>
+      </Switch>
     );
   }
 }

@@ -1,20 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 
 import '!file-loader?name=[name].[ext]!./favicon.ico';
 import '!file-loader?name=[name].[ext]!./manifest.json';
 
-import Home from 'containers/Home';
-import NotFound from 'containers/NotFound';
+import App from 'containers/App';
 
 ReactDOM.render((
   <BrowserRouter>
-    <Switch>
-      <Route exact path='/' component={Home}/>
-
-      <Route path='*' component={NotFound}/>
-    </Switch>
+    <App/>
   </BrowserRouter>
 ), document.getElementById('app'));
 
